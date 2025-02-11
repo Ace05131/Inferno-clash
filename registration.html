@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Fire Lone Wolf Tournament Registration</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional external CSS for styling -->
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            background-color: #ff6f00;
+            color: white;
+            padding: 20px 0;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2rem;
+        }
+
+        /* Form styling */
+        .registration-form {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 1rem;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #ff6f00;
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Hide the second player input initially */
+        .second-player {
+            display: none;
+        }
+
+        .navigation {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .navigation a {
+            text-decoration: none;
+            color: #ff6f00;
+            font-size: 1.2rem;
+        }
+        .navigation a:hover {
+            color: #e65c00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Free Fire Lone Wolf Tournament</h1>
+        <p>Register now and join the ultimate Free Fire competition!</p>
+    </header>
+
+    <!-- Navigation Link to index.html -->
+    <div class="navigation">
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <div class="registration-form">
+        <form action="submit_form.php" method="POST">
+            <div class="form-group">
+                <label for="ingame-name">In-Game Name:</label>
+                <input type="text" id="ingame-name" name="ingame-name" required placeholder="Enter your in-game name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            </div>
+
+            <div class="form-group">
+                <label for="game-id">Free Fire Game ID:</label>
+                <input type="text" id="game-id" name="game-id" required placeholder="Enter your Free Fire Game ID">
+            </div>
+
+            <div class="form-group">
+                <label for="phone-number">Phone Number:</label>
+                <input type="tel" id="phone-number" name="phone-number" required placeholder="Enter your phone number">
+            </div>
+
+            <div class="form-group">
+                <label for="team-name">Team Name (Optional):</label>
+                <input type="text" id="team-name" name="team-name" placeholder="Enter your team name (if any)">
+            </div>
+
+            <!-- 1v1 or 2v2 option -->
+            <div class="form-group">
+                <label for="game-mode">Select Game Mode:</label>
+                <select id="game-mode" name="game-mode" required onchange="toggleSecondPlayerField()">
+                    <option value="1v1">1v1</option>
+                    <option value="2v2">2v2</option>
+                </select>
+            </div>
+
+            <!-- Second Player's Name (optional for 2v2) -->
+            <div class="form-group second-player" id="second-player-group">
+                <label for="second-player-name">Second Player's Name (Optional):</label>
+                <input type="text" id="second-player-name" name="second-player-name" placeholder="Enter second player's in-game name">
+            </div>
+
+            <button type="submit">Register Now</button>
+        </form>
+    </div>
+
+  
+
+    <script>
+        // JavaScript to toggle visibility of the second player input field
+        function toggleSecondPlayerField() {
+            var gameMode = document.getElementById('game-mode').value;
+            var secondPlayerGroup = document.getElementById('second-player-group');
+
+            // Show or hide the second player input based on the selected game mode
+            if (gameMode === '2v2') {
+                secondPlayerGroup.style.display = 'block';
+            } else {
+                secondPlayerGroup.style.display = 'none';
+            }
+        }
+
+        // Initialize the form to hide second player field if 1v1 is selected by default
+        window.onload = function() {
+            toggleSecondPlayerField();
+        };
+    </script>
+</body>
+</html>
